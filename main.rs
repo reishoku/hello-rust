@@ -1,5 +1,8 @@
 
+use std::env;
+use std::ffi::OsStr;
 use std::io::{Result, Write, Read};
+use std::path::Path;
 use std::fs::File;
 
 fn write_string_to_file(
@@ -21,17 +24,21 @@ fn main() -> Result<()> {
     println!("data will be written to {}", "./.out.txt");
     // Create empty file named "output.txt", and
     // write `data` into it (via extenal function).
-    write_string_to_file(&data, "./out.txt")?;
+    // write_string_to_file(&data, "./out.txt")?;
 
     // read the contents of the file
     // and compare the data with `data`
-    let mut rfile = File::open("./out.txt")?;
-    let mut contents = String::new();
-    rfile.read_to_string(&mut contents)?;
-    if data == contents.to_string() {
-      println!("The data was sucessfully written to the file!");
-    } else {
-      println!("It looks like the data was not sucessfully written to the file.")
-    }
+    // let mut rfile = File::open("./out.txt")?;
+    // let mut contents = String::new();
+    // rfile.read_to_string(&mut contents)?;
+    // if data == contents.to_string() {
+    //   println!("The data was sucessfully written to the file!");
+    // } else {
+    //   println!("It looks like the data was not sucessfully written to the file.")
+    // }
+
+    // absolute path of current directory
+    let p = Path::new(".").canonicalize()?;
+    println!("{}", p.as_os_str().to_string_lossy());
     Ok(())
 }
