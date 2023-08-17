@@ -19,3 +19,5 @@ jobs:
         run: cargo check --release
       - name: "Build"
         run: cargo build --release
+      - name: "Run"
+        run: cargo run --release
