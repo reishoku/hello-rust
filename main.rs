@@ -1,5 +1,4 @@
-
 fn main() -> Result<(), ()> {
-  println!("Hello, world!");
-  Ok(())
+    println!("Hello, world!");
+    Ok(())
 }
